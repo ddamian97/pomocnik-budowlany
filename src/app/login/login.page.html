@@ -1,0 +1,29 @@
+<ion-content>
+  <div class="login-container container ion-padding">
+    <div class="login-container-in">
+      <div class="texts-container">
+        <ion-text class="ion-text-center def-marg-bottom-small">
+          <h1>Welcome</h1>
+        </ion-text>
+        <ion-text class="ion-text-center def-marg-bottom-small">
+          <h2>Please log in</h2>
+        </ion-text>
+      </div>
+      <div class="form-container">
+        <form (ngSubmit)="login()" [formGroup]="credentials">
+          <div class="input-group">
+            <ion-label position="stacked">Email</ion-label>
+            <ion-input class="" formControlName="email"></ion-input>
+          </div>
+          <div class="input-group">
+            <ion-label position="stacked">Password</ion-label>
+            <ion-input class="" type="password" formControlName="password"></ion-input>
+          </div>
+          <ion-button type="submit" expand="block" [disabled]="!credentials.valid">Anmelden</ion-button>
+        </form>
+        <div class="request-password-reset-button" [routerLink]="['/request-password-change']"><ion-text class="ion-text-right" color="light2"><div class="reset-text">Forgot your password? Click here.</div></ion-text></div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
