@@ -1,0 +1,59 @@
+.login-container{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+}
+.login-container-in{
+  padding: 4rem 0;
+  width: 100%;
+  max-width: 42rem;
+  margin: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+form{
+  padding: 4rem 0 1rem 0;
+}
+ion-input{
+  border: 1px solid var(--ion-color-medium);
+  --padding-top: 1.8rem;
+  --padding-bottom: 2rem;
+  --padding-start: 1.8rem;
+  --padding-end: .6rem;
+  font-size: 1.6rem;
+}
+input-group{
+  margin-bottom: 2rem;
+}
+h1, h2{
+  font-size: 2rem;
+}
+h1{
+  font-weight: 500;
+}
+h2{
+  font-weight: 300;
+  margin: 0;
+}
+.input-group{
+  margin-bottom: 2rem;
+}
+ion-label {
+  &.label-stacked {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--ion-color-primary);
+  }
+}
+.reset-text{
+  font-size: 1.2rem;
+}
