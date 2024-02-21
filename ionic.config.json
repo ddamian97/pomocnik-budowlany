@@ -1,0 +1,8 @@
+{
+  "name": "Pomocnik budowlany",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "b52eea74"
+}
