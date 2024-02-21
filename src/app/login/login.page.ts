@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AlertController, LoadingController} from "@ionic/angular";
+import {AlertController, LoadingController, MenuController} from "@ionic/angular";
 import {Router} from "@angular/router";
 
 @Component({
@@ -14,8 +14,8 @@ export class LoginPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private loadingController: LoadingController,
-    private alertController: AlertController,
-    private router: Router
+    private router: Router,
+    public menuCtrl: MenuController
   ) {
   }
 
@@ -32,7 +32,8 @@ export class LoginPage implements OnInit {
       loading.dismiss();
       this.router.navigateByUrl(`/folder/inbox`);
     }, 2000);
-
   }
-
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+  }
 }
