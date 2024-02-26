@@ -2,3 +2,25 @@ app-custom-labeled-card{
   display: block;
   margin-top: 5rem;
 }
+ion-segment-button{
+  --indicator-box-shadow: none;
+}
+ion-segment-button::part(indicator-background) {
+  background: #ffffff;
+}
+
+/* Material Design styles */
+ion-segment-button.md::part(native) {
+  color: #000;
+}
+
+ion-segment-button.md::part(indicator-background) {
+  height: 4px;
+}
+
+/* iOS styles */
+
+ion-segment-button.ios::part(indicator-background) {
+  border-radius: 2rem;
+
+}

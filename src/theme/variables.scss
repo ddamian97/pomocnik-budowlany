@@ -3,7 +3,12 @@
 
 /** Ionic CSS Variables **/
 :root {
-  /** primary **/
+  --border-radius: 1.4rem;
+  --ion-background-color: #f3f3f3;
+  --ion-toolbar-segment-color: var(--ion-background-color);
+  --ion-toolbar-segment-color-checked: #ffffff;
+  --ion-item-background: #ffffff;
+    /** primary **/
   --ion-color-primary: #3880FF;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;

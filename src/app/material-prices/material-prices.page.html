@@ -1,7 +1,7 @@
 <ion-header [translucent]="true" collapse="fade">
-  <ion-toolbar>
+  <ion-toolbar class="header-toolbar">
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button color="dark"></ion-menu-button>
     </ion-buttons>
     <ion-title>
       {{segment}}
@@ -12,11 +12,11 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">{{ segment }}</ion-title>
+      <ion-title size="large" class="condense-header-title">{{ segment }}</ion-title>
     </ion-toolbar>
   </ion-header>
   <div class="segment-container ion-padding">
-    <ion-segment [(ngModel)]="segment" (ionChange)="segmentChange()">
+    <ion-segment [(ngModel)]="segment" (ionChange)="segmentChange()" color="light">
       <ion-segment-button value="ALUMINUM">
         Aluminium
       </ion-segment-button>
