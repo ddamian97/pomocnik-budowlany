@@ -30,6 +30,19 @@
 :root{
   --ion-safe-area-top: 2rem;
 }
+ion-menu::part(container) {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  background: rgba(255, 255, 255, 0.6);
+}
+.menu-content{
+  --background: transparent !important;
+}
 .condense-header-title{
   font-size: 3.2rem;
 }
