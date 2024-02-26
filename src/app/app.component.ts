@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   public appPages = [
     { title: 'Ceny materiałów', url: '/material-prices', icon: 'bar-chart' },
+    { title: 'Kursy walut', url: '/exchange-rates', icon: 'trending-up' },
   ];
   constructor() {}
 }

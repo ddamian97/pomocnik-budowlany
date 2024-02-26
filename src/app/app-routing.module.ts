@@ -9,11 +9,15 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'material-prices',
-    loadChildren: () => import('./material-prices/material-prices.module').then( m => m.MaterialPricesPageModule)
+    loadChildren: () => import('./pages/material-prices/material-prices.module').then(m => m.MaterialPricesPageModule)
+  },
+  {
+    path: 'exchange-rates',
+    loadChildren: () => import('./pages/exchange-rates/exchange-rates.module').then( m => m.ExchangeRatesPageModule)
   }
 ];
 
