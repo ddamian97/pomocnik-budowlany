@@ -1,0 +1,16 @@
+<ion-text class="card-title-container" *ngIf="label">
+  <h2 class="ion-padding-start card-title">{{label}}</h2>
+</ion-text>
+<ion-card>
+  <ion-card-content>
+    <p *ngIf="text">{{text}}</p>
+    <div class="links-container d-flex flex-column w-100 align-items-start justify-content-start" *ngIf="links">
+        <span>Zobacz: </span>
+      <a
+        *ngFor="let link of links"
+        [href]="link.href? link.href: '#'"
+        class="link d-flex flex-row align-items-start justify-content-start"
+      ><ion-icon name="compass" color="tertiary"></ion-icon><ion-text color="tertiary">{{link.text? link.text: ''}}</ion-text></a>
+    </div>
+  </ion-card-content>
+</ion-card>

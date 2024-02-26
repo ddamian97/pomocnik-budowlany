@@ -8,15 +8,17 @@ import { MaterialPricesPageRoutingModule } from './material-prices-routing.modul
 
 import { MaterialPricesPage } from './material-prices.page';
 import {NgChartsModule } from 'ng2-charts';
+import {CustomLabeledCardComponent} from "../components/custom-labeled-card/custom-labeled-card.component";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    MaterialPricesPageRoutingModule,
-    NgChartsModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        MaterialPricesPageRoutingModule,
+        NgChartsModule,
+        CustomLabeledCardComponent
+    ],
   declarations: [MaterialPricesPage]
 })
 export class MaterialPricesPageModule {}

@@ -54,27 +54,27 @@ export class MaterialPricesPage implements OnInit {
   }
 
   getData(function_name = 'ALUMINUM') {
-    this.http.get(`https://www.alphavantage.co/query?function=${function_name}&interval=monthly&apikey=37BLD6D5U7OEKS3U`).subscribe(async (res: any) => {
-      if ('data' in res) {
-        const data: any[] = res['data'];
-        this.chartLabels = [];
-        this.chartData[0].data = [];
-        if (data && Array.isArray(data)) {
-          for (let entry of data) {
-            this.chartLabels.push(entry['date']);
-            this.chartData[0].data.push(entry['value']);
-          }
-        }else{
-          await this.presentAlert();
-        }
-      } else {
-        if ('Information' in res) {
-          await this.presentAlert(res['Information']);
-        }else{
-          await this.presentAlert();
-        }
-      }
-    });
+    // this.http.get(`https://www.alphavantage.co/query?function=${function_name}&interval=monthly&apikey=37BLD6D5U7OEKS3U`).subscribe(async (res: any) => {
+    //   if ('data' in res) {
+    //     const data: any[] = res['data'];
+    //     this.chartLabels = [];
+    //     this.chartData[0].data = [];
+    //     if (data && Array.isArray(data)) {
+    //       for (let entry of data) {
+    //         this.chartLabels.push(entry['date']);
+    //         this.chartData[0].data.push(entry['value']);
+    //       }
+    //     }else{
+    //       await this.presentAlert();
+    //     }
+    //   } else {
+    //     if ('Information' in res) {
+    //       await this.presentAlert(res['Information']);
+    //     }else{
+    //       await this.presentAlert();
+    //     }
+    //   }
+    // });
   }
   segmentChange(){
     this.getData(this.segment);
