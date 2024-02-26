@@ -30,7 +30,7 @@ export class LoginPage implements OnInit {
     await loading.present();
     setTimeout(() => {
       loading.dismiss();
-      this.router.navigateByUrl(`/folder/inbox`);
+      this.router.navigateByUrl(`material-prices`);
     }, 2000);
   }
   ionViewWillEnter() {
