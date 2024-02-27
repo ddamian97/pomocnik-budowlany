@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ChartDataset} from "chart.js";
-import {HttpClient} from "@angular/common/http";
-import {AlertController, LoadingController} from "@ionic/angular";
-import {ExchangeService} from "../../services/exchange.service";
+import { AlertController, LoadingController } from "@ionic/angular";
+import { ExchangeService } from "../../services/exchange.service";
 
 @Component({
   selector: 'app-exchange-rates',
@@ -10,37 +8,18 @@ import {ExchangeService} from "../../services/exchange.service";
   styleUrls: ['./exchange-rates.page.scss'],
 })
 export class ExchangeRatesPage implements OnInit {
-  countryNames = new Map();
 
-  segment: string = 'ALUMINUM';
+  exchangeData: any[] = [];
+  symbols = ['EUR', 'USD', 'GBP'];
 
-  chartData: ChartDataset[] = [{ data: [], label: 'Commodities prices' }];
-  chartLabels: string[] | undefined;
-
-  // Options
-  chartOptions = {
-    responsive: true,
-    pan: {
-      enabled: true,
-      mode: 'xy'
-    },
-    zoom: {
-      enabled: true,
-      mode: 'xy'
-    },
-  };
-  chartType: "bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar" = "bar";
-  showLegend = false;
-
-  constructor(private http: HttpClient,
-              private alertController: AlertController,
-              private exchangeService: ExchangeService,
-              private loadingController: LoadingController,
-              ) {
-  }
+  constructor(
+    private alertController: AlertController,
+    private exchangeService: ExchangeService,
+    private loadingController: LoadingController,
+  ) {}
 
   ngOnInit() {
-    this.getData()
+    this.getData();
   }
 
   async presentAlert(message = 'Try again later') {
@@ -53,25 +32,25 @@ export class ExchangeRatesPage implements OnInit {
     await alert.present();
   }
 
-  async getData(function_name = 'ALUMINUM') {
+  async getData() {
     const loading = await this.loadingController.create();
     await loading.present();
-    this.exchangeService.getCountries().subscribe({
-      next: (res) => {
-        console.log('res');
-        console.log(res);
-        loading.dismiss();
-      },
-      error: async (error) => {
-        console.log('error');
-        console.log(error);
-        loading.dismiss();
-        await this.presentAlert(error);
 
+    for (const symbol of this.symbols) {
+      try {
+        const value = await this.exchangeService.latestValue(symbol);
+        this.exchangeData.push({ symbol, value });
+      } catch (error) {
+        console.error(`Błąd podczas pobierania danych dla ${symbol}:`, error);
+        await this.presentAlert('Błąd podczas pobierania danych');
       }
-    })
+    }
+
+    await loading.dismiss();
   }
-  segmentChange(){
-    this.getData(this.segment);
+
+  getExchangeValue(symbol: string): string {
+    const data = this.exchangeData.find(item => item.symbol === symbol);
+    return data ? data.value['PLN'] : null;
   }
 }

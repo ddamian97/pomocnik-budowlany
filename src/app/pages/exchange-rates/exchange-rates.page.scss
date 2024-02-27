@@ -1,0 +1,10 @@
+.horizontal-cards-container{
+  width: auto;
+  max-width: calc(100vw - 4rem);
+  overflow: auto;
+  ion-card{
+    width: auto;
+    max-width: 40vw;
+    min-width: 40vw;
+  }
+}

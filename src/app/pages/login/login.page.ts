@@ -20,6 +20,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    this.menuCtrl.enable(false);
     this.credentials = this.fb.group({
       email: ['example@pomocnik.pl', [Validators.required, Validators.email]],
       password: ['1234', Validators.required]
@@ -33,7 +34,7 @@ export class LoginPage implements OnInit {
       this.router.navigateByUrl(`material-prices`);
     }, 2000);
   }
-  ionViewWillEnter() {
-    this.menuCtrl.enable(false);
+  async ionViewWillLeave() {
+    await this.menuCtrl.enable(true);
   }
 }

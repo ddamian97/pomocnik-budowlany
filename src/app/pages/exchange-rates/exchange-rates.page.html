@@ -4,7 +4,7 @@
       <ion-menu-button color="dark"></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      {{segment}}
+      Kursy walut
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,129 +12,20 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large" class="condense-header-title">{{ segment }}</ion-title>
+      <ion-title size="large" class="condense-header-title">Kursy walut</ion-title>
     </ion-toolbar>
   </ion-header>
-  <div class="segment-container ion-padding">
-    <ion-segment [(ngModel)]="segment" (ionChange)="segmentChange()" color="light">
-      <ion-segment-button value="ALUMINUM">
-        Aluminium
-      </ion-segment-button>
-      <ion-segment-button value="COPPER">
-        Miedź
-      </ion-segment-button>
-      <ion-segment-button value="WTI">
-        Ropa naftowa
-      </ion-segment-button>
-    </ion-segment>
+  <div class="horizontal-cards-container d-flex flex-row align-items-start justify-content-start">
+    <ion-card *ngFor="let symbol of symbols">
+      <ion-card-header>
+        <ion-card-title>{{ symbol }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ng-container *ngIf="exchangeData.length > 0 && getExchangeValue(symbol)">
+          <span>{{ getExchangeValue(symbol) | currency: 'PLN':'':'1.2-2'}} <span>zł</span></span>
+        </ng-container>
+      </ion-card-content>
+    </ion-card>
   </div>
-  <div [ngSwitch]="segment" class="charts-container">
-    <div *ngSwitchCase="'ALUMINUM'">
-      <ion-card>
-        <ion-card-content>
-          <canvas baseChart
-                  [datasets]="chartData"
-                  [type]="chartType"
-                  [labels]="chartLabels"
-                  [options]="chartOptions"
-                  [legend]="showLegend">
-          </canvas>
-        </ion-card-content>
-      </ion-card>
-      <app-custom-labeled-card
-        [label]="'Źródło danych'"
-        [text]="'International Monetary Fund (IMF Terms of Use), Global price of Aluminum, retrieved from FRED,\n'+
-'      Federal Reserve Bank of St. Louis. This data feed uses the FRED® API but is not endorsed or certified by the\n'+
-'      Federal Reserve Bank of St. Louis. By using this data feed, you agree to be bound by the FRED® API Terms of Use.'"
-        [links]="[
-      {'href': 'https://www.imf.org/external/terms.htm', 'text': 'IMF Terms of Use'},
-      {'href': 'https://fred.stlouisfed.org/docs/api/terms_of_use.html', 'text': 'FRED® API Terms of Use'},
-      ]"
-      ></app-custom-labeled-card>
-      <app-custom-labeled-card
-        [label]="'Aluminium - informacje'"
-        [text]="'Aluminium (oznaczenie chemiczne Al) jest bardzo lekkim metalem cechującym się wysoką przewodnością prądu elektrycznego. Cechy te sprawiają,  że znalazł szerokie zastosowanie w elektrotechnice, przemyśle lotniczym, budowlanym i w wielu innych dziedzinach przemysłu.\n'+
-'\n'+
-'Metal ten i jego stopy są bardzo łatwo spawalne różnymi metodami.\n'+
-'\n'+
-'Wyjątkiem są stopy grupy 2000 powszechnie nazywane duralami, które wykazują obniżoną spawalność.\n'+
-'\n'+
-'Aluminium znalazło szerokie zastosowanie przede wszystkim dzięki swojej znacznej odporności chemicznej oraz niskiej wadze. Dlatego z jego stopów wykonuje się przykładowo drobne monety, przybory i naczynia kuchenne.  W budownictwie wykorzystuje się profile wyciskane, z których wykonuje się np. stolarkę budowlaną.'"
-        [links]="[
-      {'href': 'https://proal.com.pl/o-aluminium/', 'text': 'Proal'},
-      ]"
-      ></app-custom-labeled-card>
-    </div>
-    <div *ngSwitchCase="'COPPER'">
-      <ion-card>
-        <ion-card-content>
-          <canvas baseChart
-                  [datasets]="chartData"
-                  [type]="chartType"
-                  [labels]="chartLabels"
-                  [options]="chartOptions"
-                  [legend]="showLegend">
-          </canvas>
-        </ion-card-content>
-      </ion-card>
-      <app-custom-labeled-card
-        [label]="'Źródło danych'"
-        [text]="'Source: International Monetary Fund (IMF Terms of Use), Global price of Copper, retrieved from FRED,\n'+
-'        Federal Reserve Bank of St. Louis. This data feed uses the FRED® API but is not endorsed or certified by the\n'+
-'        Federal Reserve Bank of St. Louis. By using this data feed, you agree to be bound by the FRED® API Terms of Use.'"
-        [links]="[
-      {'href': 'https://www.imf.org/external/terms.htm', 'text': 'IMF Terms of Use'},
-      {'href': 'https://fred.stlouisfed.org/docs/api/terms_of_use.html', 'text': 'FRED® API Terms of Use'},
-      ]"
-      ></app-custom-labeled-card>
-      <app-custom-labeled-card
-        [label]="'Miedź - informacje'"
-        [text]="'Miedź to metal o bardzo szerokim zastosowaniu. Jej waga jest też dosyć duża, a gęstość wynosi 8,9 g/cm3. ' +
-         'Jego budowa elektronowa sprawia, że ma świetną przewodność elektryczną, która decyduje o jego przewodnich zastosowaniach. ' +
-          'Warto mieć na uwadze fakt, że miedź nie ma zbyt wysokich parametrów. Jej wytrzymałość na rozciąganie wynosi od ' +
-           '200 do 220 MPa, a twardość w skali Brinella – ok. 30 HB. Co za tym idzie, miedź w stanie czystym nie ' +
-            'posiada zastosowań konstrukcyjnych, jednak już w połączeniu z mosiądzem czy brązem owszem. Czysta miedź w ' +
-             'przyrodzie występuje dosyć sporadycznie. Najczęściej pozyskiwana jest z minerałów rudnych (kowelin, ' +
-              'chalkopiryt oraz chalkozyn).'"
-        [links]="[
-      {'href': 'https://www.ebmia.pl/wiedza/porady/obrobka-porady/miedz-co-to-jest-wlasciwosci-zastosowanie/', 'text': 'Ebmia'},
-      ]"
-      ></app-custom-labeled-card>
-    </div>
-    <div *ngSwitchCase="'WTI'">
-      <ion-card>
-        <ion-card-content>
-          <canvas baseChart
-                  [datasets]="chartData"
-                  [type]="chartType"
-                  [labels]="chartLabels"
-                  [options]="chartOptions"
-                  [legend]="showLegend">
-          </canvas>
-        </ion-card-content>
-      </ion-card>
-      <app-custom-labeled-card
-        [label]="'Źródło danych'"
-        [text]="'Source: U.S. Energy Information Administration, Crude Oil Prices: West Texas Intermediate (WTI) -\n'+
-'        Cushing, Oklahoma, retrieved from FRED, Federal Reserve Bank of St. Louis. This data feed uses the FRED® API\n'+
-'        but is not endorsed or certified by the Federal Reserve Bank of St. Louis. By using this data feed,\n'+
-'        you agree to be bound by the FRED® API Terms of Use.'"
-        [links]="[
-      {'href': 'https://fred.stlouisfed.org/docs/api/terms_of_use.html', 'text': 'FRED® API Terms of Use'},
-      ]"
-      ></app-custom-labeled-card>
-      <app-custom-labeled-card
-        [label]="'Ropa naftowa - informacje'"
-        [text]="'Olej skalny - Kopalny surowiec energetyczny będący mieszaniną naturalnych węglowodorów ciekłych ' +
-         'oraz rozpuszczonych w nich węglowodorów stałych i gazowych. Podstawowy skład chemiczny ropy naftowej stanowią:' +
-          ' węgiel (84 – 86%), wodór (12,5 - 14,5%) oraz podrzędnie inne pierwiastki (głównie tlen, azot i siarka).' +
-           ' Ropa naftowa jest lżejszą od wody, oleistą cieczą o barwie jasnożółtej przez brunatną do prawie czarnej oraz ostrym, ' +
-            'charakterystycznym zapachu, często uwarunkowanym zawartością siarki.'"
-        [links]="[
-      {'href': 'https://infolupki.pgi.gov.pl/pl/ropa-naftowa', 'text': 'Serwis Informacyjny PAŃSTWOWEJ SŁUŻBY GEOLOGICZNEJ'},
-      ]"
-      ></app-custom-labeled-card>
 
-    </div>
-  </div>
 </ion-content>
