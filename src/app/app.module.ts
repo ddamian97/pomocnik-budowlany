@@ -6,7 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import {HttpClientModule, provideHttpClient} from '@angular/common/http';
 
 import 'chartjs-plugin-zoom';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -19,7 +19,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
   // or after 30 seconds (whichever comes first).
   registrationStrategy: 'registerWhenStable:30000'
 })],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+  provideHttpClient()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ChartDataset} from "chart.js";
 import {HttpClient} from "@angular/common/http";
-import {AlertController} from "@ionic/angular";
+import {AlertController, LoadingController} from "@ionic/angular";
+import {ExchangeService} from "../../services/exchange.service";
 
 @Component({
   selector: 'app-exchange-rates',
@@ -9,6 +10,7 @@ import {AlertController} from "@ionic/angular";
   styleUrls: ['./exchange-rates.page.scss'],
 })
 export class ExchangeRatesPage implements OnInit {
+  countryNames = new Map();
 
   segment: string = 'ALUMINUM';
 
@@ -30,7 +32,11 @@ export class ExchangeRatesPage implements OnInit {
   chartType: "bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar" = "bar";
   showLegend = false;
 
-  constructor(private http: HttpClient, private alertController: AlertController) {
+  constructor(private http: HttpClient,
+              private alertController: AlertController,
+              private exchangeService: ExchangeService,
+              private loadingController: LoadingController,
+              ) {
   }
 
   ngOnInit() {
@@ -47,28 +53,23 @@ export class ExchangeRatesPage implements OnInit {
     await alert.present();
   }
 
-  getData(function_name = 'ALUMINUM') {
-    this.http.get(`https://www.alphavantage.co/query?function=${function_name}&interval=monthly&apikey=37BLD6D5U7OEKS3U`).subscribe(async (res: any) => {
-      if ('data' in res) {
-        const data: any[] = res['data'];
-        this.chartLabels = [];
-        this.chartData[0].data = [];
-        if (data && Array.isArray(data)) {
-          for (let entry of data) {
-            this.chartLabels.push(entry['date']);
-            this.chartData[0].data.push(entry['value']);
-          }
-        }else{
-          await this.presentAlert();
-        }
-      } else {
-        if ('Information' in res) {
-          await this.presentAlert(res['Information']);
-        }else{
-          await this.presentAlert();
-        }
+  async getData(function_name = 'ALUMINUM') {
+    const loading = await this.loadingController.create();
+    await loading.present();
+    this.exchangeService.getCountries().subscribe({
+      next: (res) => {
+        console.log('res');
+        console.log(res);
+        loading.dismiss();
+      },
+      error: async (error) => {
+        console.log('error');
+        console.log(error);
+        loading.dismiss();
+        await this.presentAlert(error);
+
       }
-    });
+    })
   }
   segmentChange(){
     this.getData(this.segment);
