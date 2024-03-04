@@ -18,12 +18,14 @@
   <div class="horizontal-cards-container d-flex flex-row align-items-start justify-content-start">
     <ion-card *ngFor="let symbol of symbols">
       <ion-card-header>
-        <ion-card-title>{{ symbol }}</ion-card-title>
+        <img class="card-icon" [src]="'./assets/' + symbol + '-flag.png'" [alt]="symbol + ' flag'">
       </ion-card-header>
       <ion-card-content>
         <ng-container *ngIf="exchangeData.length > 0 && getExchangeValue(symbol)">
-          <span>{{ getExchangeValue(symbol) | currency: 'PLN':'':'1.2-2'}} <span>zł</span></span>
+          <span class="value">{{ getExchangeValue(symbol) | currency: 'PLN':'':'1.2-2'}} <span>zł</span></span>
         </ng-container>
+        <div class="symbol"><ion-text color="medium">{{ symbol }}</ion-text></div>
+
       </ion-card-content>
     </ion-card>
   </div>
