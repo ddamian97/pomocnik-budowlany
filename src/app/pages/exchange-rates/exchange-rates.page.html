@@ -4,7 +4,7 @@
       <ion-menu-button color="dark"></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Kursy walut
+      Currency rates
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,7 +12,7 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large" class="condense-header-title">Kursy walut</ion-title>
+      <ion-title size="large" class="condense-header-title">Currency rates</ion-title>
     </ion-toolbar>
   </ion-header>
   <div class="horizontal-cards-container d-flex flex-row align-items-start justify-content-start">
@@ -22,7 +22,7 @@
       </ion-card-header>
       <ion-card-content>
         <ng-container *ngIf="exchangeData.length > 0 && getExchangeValue(symbol)">
-          <span class="value">{{ getExchangeValue(symbol) | currency: 'PLN':'':'1.2-2'}} <span>zł</span></span>
+          <span class="value">{{ getExchangeValue(symbol) | currency: 'PLN':'':'1.2-2'}} <span>PLN</span></span>
         </ng-container>
         <div class="symbol"><ion-text color="medium">{{ symbol }}</ion-text></div>
 

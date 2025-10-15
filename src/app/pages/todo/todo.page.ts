@@ -39,14 +39,14 @@ export class TodoPage implements OnInit{
 
   getProjectSummary(project: Project): string {
     if (!project.tasks) {
-      return 'Brak zadań';
+      return 'No tasks';
     }
     const completed = project.tasks.filter(t => t.done).length;
     const total = project.tasks.length;
     if (total === 0) {
-      return 'Brak zadań';
+      return 'No tasks';
     }
-    return `Ukończono ${completed} z ${total}`;
+    return `Completed ${completed} z ${total}`;
   }
 
 }

@@ -21,10 +21,10 @@
         Aluminium
       </ion-segment-button>
       <ion-segment-button value="COPPER">
-        Miedź
+        Copper
       </ion-segment-button>
       <ion-segment-button value="WTI">
-        Ropa naftowa
+        Crude Oil
       </ion-segment-button>
     </ion-segment>
   </div>
@@ -42,7 +42,7 @@
         </ion-card-content>
       </ion-card>
       <app-custom-labeled-card
-        [label]="'Źródło danych'"
+        [label]="'Source'"
         [text]="'International Monetary Fund (IMF Terms of Use), Global price of Aluminum, retrieved from FRED,\n'+
 '      Federal Reserve Bank of St. Louis. This data feed uses the FRED® API but is not endorsed or certified by the\n'+
 '      Federal Reserve Bank of St. Louis. By using this data feed, you agree to be bound by the FRED® API Terms of Use.'"
@@ -52,14 +52,14 @@
       ]"
       ></app-custom-labeled-card>
       <app-custom-labeled-card
-        [label]="'Aluminium - informacje'"
-        [text]="'Aluminium (oznaczenie chemiczne Al) jest bardzo lekkim metalem cechującym się wysoką przewodnością prądu elektrycznego. Cechy te sprawiają,  że znalazł szerokie zastosowanie w elektrotechnice, przemyśle lotniczym, budowlanym i w wielu innych dziedzinach przemysłu.\n'+
+        [label]="'Details'"
+        [text]="'Aluminum (chemical symbol Al) is a very light metal characterized by high electrical conductivity. These properties mean it has found wide application in electrical engineering, aerospace, construction, and many other areas of industry.\n'+
 '\n'+
-'Metal ten i jego stopy są bardzo łatwo spawalne różnymi metodami.\n'+
+'This metal and its alloys are very easily weldable using various methods.\n'+
 '\n'+
-'Wyjątkiem są stopy grupy 2000 powszechnie nazywane duralami, które wykazują obniżoną spawalność.\n'+
+'The exception is the 2000 series alloys, commonly known as duralumin, which exhibit reduced weldability.\n'+
 '\n'+
-'Aluminium znalazło szerokie zastosowanie przede wszystkim dzięki swojej znacznej odporności chemicznej oraz niskiej wadze. Dlatego z jego stopów wykonuje się przykładowo drobne monety, przybory i naczynia kuchenne.  W budownictwie wykorzystuje się profile wyciskane, z których wykonuje się np. stolarkę budowlaną.'"
+'Aluminum has found wide application primarily due to its significant chemical resistance and low weight. This is why its alloys are used to make, for example, small coins, kitchen utensils, and cookware. In construction, extruded profiles are used to make, for example, building joinery (windows, doors, etc.).'"
         [links]="[
       {'href': 'https://proal.com.pl/o-aluminium/', 'text': 'Proal'},
       ]"
@@ -78,8 +78,8 @@
         </ion-card-content>
       </ion-card>
       <app-custom-labeled-card
-        [label]="'Źródło danych'"
-        [text]="'Source: International Monetary Fund (IMF Terms of Use), Global price of Copper, retrieved from FRED,\n'+
+        [label]="'Source'"
+        [text]="'International Monetary Fund (IMF Terms of Use), Global price of Copper, retrieved from FRED,\n'+
 '        Federal Reserve Bank of St. Louis. This data feed uses the FRED® API but is not endorsed or certified by the\n'+
 '        Federal Reserve Bank of St. Louis. By using this data feed, you agree to be bound by the FRED® API Terms of Use.'"
         [links]="[
@@ -88,14 +88,14 @@
       ]"
       ></app-custom-labeled-card>
       <app-custom-labeled-card
-        [label]="'Miedź - informacje'"
-        [text]="'Miedź to metal o bardzo szerokim zastosowaniu. Jej waga jest też dosyć duża, a gęstość wynosi 8,9 g/cm3. ' +
-         'Jego budowa elektronowa sprawia, że ma świetną przewodność elektryczną, która decyduje o jego przewodnich zastosowaniach. ' +
-          'Warto mieć na uwadze fakt, że miedź nie ma zbyt wysokich parametrów. Jej wytrzymałość na rozciąganie wynosi od ' +
-           '200 do 220 MPa, a twardość w skali Brinella – ok. 30 HB. Co za tym idzie, miedź w stanie czystym nie ' +
-            'posiada zastosowań konstrukcyjnych, jednak już w połączeniu z mosiądzem czy brązem owszem. Czysta miedź w ' +
-             'przyrodzie występuje dosyć sporadycznie. Najczęściej pozyskiwana jest z minerałów rudnych (kowelin, ' +
-              'chalkopiryt oraz chalkozyn).'"
+        [label]="'Details'"
+        [text]="'Copper is a metal with very wide application. Its weight is also quite high, with a density of 8.9 g/cm3. ' +
+ 'Its electron structure gives it excellent electrical conductivity, which dictates its primary applications. ' +
+  'It is worth bearing in mind that copper does not have very high strength parameters. Its tensile strength is ' +
+   '200 to 220 MPa, and its hardness on the Brinell scale is approx. 30 HB. Consequently, pure copper does not ' +
+    'have structural applications, although it does when combined with brass or bronze. Pure copper occurs ' +
+     'relatively sporadically in nature. It is most often obtained from ore minerals (covellite, ' +
+      'chalcopyrite, and chalcocite).'"
         [links]="[
       {'href': 'https://www.ebmia.pl/wiedza/porady/obrobka-porady/miedz-co-to-jest-wlasciwosci-zastosowanie/', 'text': 'Ebmia'},
       ]"
@@ -114,8 +114,8 @@
         </ion-card-content>
       </ion-card>
       <app-custom-labeled-card
-        [label]="'Źródło danych'"
-        [text]="'Source: U.S. Energy Information Administration, Crude Oil Prices: West Texas Intermediate (WTI) -\n'+
+        [label]="'Source'"
+        [text]="'U.S. Energy Information Administration, Crude Oil Prices: West Texas Intermediate (WTI) -\n'+
 '        Cushing, Oklahoma, retrieved from FRED, Federal Reserve Bank of St. Louis. This data feed uses the FRED® API\n'+
 '        but is not endorsed or certified by the Federal Reserve Bank of St. Louis. By using this data feed,\n'+
 '        you agree to be bound by the FRED® API Terms of Use.'"
@@ -124,12 +124,12 @@
       ]"
       ></app-custom-labeled-card>
       <app-custom-labeled-card
-        [label]="'Ropa naftowa - informacje'"
-        [text]="'Olej skalny - Kopalny surowiec energetyczny będący mieszaniną naturalnych węglowodorów ciekłych ' +
-         'oraz rozpuszczonych w nich węglowodorów stałych i gazowych. Podstawowy skład chemiczny ropy naftowej stanowią:' +
-          ' węgiel (84 – 86%), wodór (12,5 - 14,5%) oraz podrzędnie inne pierwiastki (głównie tlen, azot i siarka).' +
-           ' Ropa naftowa jest lżejszą od wody, oleistą cieczą o barwie jasnożółtej przez brunatną do prawie czarnej oraz ostrym, ' +
-            'charakterystycznym zapachu, często uwarunkowanym zawartością siarki.'"
+        [label]="'Details'"
+        [text]="'Rock oil - A fossil energy source that is a mixture of natural liquid hydrocarbons ' +
+ 'and solid and gaseous hydrocarbons dissolved within them. The basic chemical composition of crude oil is:' +
+  ' carbon (84 – 86%), hydrogen (12.5 - 14.5%), and minor amounts of other elements (mainly oxygen, nitrogen, and sulfur).' +
+   ' Crude oil is an oily liquid that is lighter than water, ranges in color from light yellow through brown to almost black, and has a pungent, ' +
+    'characteristic odor, often conditioned by its sulfur content.'"
         [links]="[
       {'href': 'https://infolupki.pgi.gov.pl/pl/ropa-naftowa', 'text': 'Serwis Informacyjny PAŃSTWOWEJ SŁUŻBY GEOLOGICZNEJ'},
       ]"

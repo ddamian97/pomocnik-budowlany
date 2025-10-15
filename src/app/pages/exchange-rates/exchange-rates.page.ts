@@ -42,7 +42,7 @@ export class ExchangeRatesPage implements OnInit {
         this.exchangeData.push({ symbol, value });
       } catch (error) {
         console.error(`Error for ${symbol}:`, error);
-        await this.presentAlert('Błąd podczas pobierania danych');
+        await this.presentAlert('Data retrieval error');
       }
     }
 
