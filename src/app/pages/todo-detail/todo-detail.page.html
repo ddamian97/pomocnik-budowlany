@@ -1,0 +1,35 @@
+<ion-header [translucent]="true" collapse="fade">
+  <ion-toolbar class="header-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/todo" color="dark"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="project" [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" class="condense-header-title">
+        {{ project?.name }}
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-list *ngIf="project">
+      <ion-item *ngFor="let task of project.tasks" lines="none">
+        <ion-checkbox
+          slot="start"
+          [checked]="task.done"
+          (ionChange)="toggleTask(task)"></ion-checkbox>
+        <ion-label class="task-name" [class.task-completed]="task.done">
+          {{ task.name }}
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button *ngIf="project" (click)="addNewTask()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

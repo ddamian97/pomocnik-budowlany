@@ -41,7 +41,7 @@ export class ExchangeRatesPage implements OnInit {
         const value = await this.exchangeService.latestValue(symbol);
         this.exchangeData.push({ symbol, value });
       } catch (error) {
-        console.error(`Błąd podczas pobierania danych dla ${symbol}:`, error);
+        console.error(`Error for ${symbol}:`, error);
         await this.presentAlert('Błąd podczas pobierania danych');
       }
     }

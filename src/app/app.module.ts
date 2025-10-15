@@ -10,15 +10,24 @@ import {HttpClientModule, provideHttpClient} from '@angular/common/http';
 
 import 'chartjs-plugin-zoom';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot({rippleEffect: true, mode: "ios"}), AppRoutingModule, HttpClientModule, ServiceWorkerModule.register('ngsw-worker.js', {
+  imports: [
+    IonicStorageModule.forRoot(),
+    BrowserModule,
+    IonicModule.forRoot({rippleEffect: true, mode: "ios"}),
+    AppRoutingModule,
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js',
+      {
   enabled: !isDevMode(),
   // Register the ServiceWorker as soon as the application is stable
   // or after 30 seconds (whichever comes first).
   registrationStrategy: 'registerWhenStable:30000'
-})],
+})
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   provideHttpClient()],
   bootstrap: [AppComponent],

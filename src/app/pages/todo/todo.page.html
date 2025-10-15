@@ -1,0 +1,43 @@
+<ion-header [translucent]="true" collapse="fade">
+  <ion-toolbar class="header-toolbar">
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Lista Zadań
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" class="condense-header-title">Lista Zadań</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-list>
+      <ion-item-divider color="light">
+        <ion-label>Projekty / Etapy</ion-label>
+        <ion-button (click)="addCategory()" slot="end" fill="clear" size="small" class="add-category-button">
+          <ion-icon name="add" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-item-divider>
+      <ion-item button
+                detail="true"
+                *ngFor="let proj of projects"
+                [routerLink]="['/todo', proj.id]"
+                lines="none"
+                class="project-item"
+      >
+        <div slot="start"
+             class="project-color-dot"
+             [style.background-color]="proj.color">
+        </div>
+        <ion-label>
+          <h3 class="project-name">{{ proj.name }}</h3>
+          <p class="project-description">{{ getProjectSummary(proj) }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

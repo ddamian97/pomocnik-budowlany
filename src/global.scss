@@ -91,3 +91,13 @@ ion-card-content{
   padding-top: 2rem !important;
   padding-bottom: 2rem !important;
 }
+
+.color-preview {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 1.5rem;
+}
+
+.circle-picker {
+  padding: var(--ion-padding);
+}
