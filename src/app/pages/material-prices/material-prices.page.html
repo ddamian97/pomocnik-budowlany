@@ -1,0 +1,140 @@
+<ion-header [translucent]="true" collapse="fade">
+  <ion-toolbar class="header-toolbar">
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{segment}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" class="condense-header-title">{{ segment }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div class="segment-container ion-padding">
+    <ion-segment [(ngModel)]="segment" (ionChange)="segmentChange()" color="light">
+      <ion-segment-button value="ALUMINUM">
+        Aluminium
+      </ion-segment-button>
+      <ion-segment-button value="COPPER">
+        Copper
+      </ion-segment-button>
+      <ion-segment-button value="WTI">
+        Crude Oil
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div [ngSwitch]="segment" class="charts-container">
+    <div *ngSwitchCase="'ALUMINUM'">
+      <ion-card>
+        <ion-card-content>
+          <canvas baseChart
+                  [datasets]="chartData"
+                  [type]="chartType"
+                  [labels]="chartLabels"
+                  [options]="chartOptions"
+                  [legend]="showLegend">
+          </canvas>
+        </ion-card-content>
+      </ion-card>
+      <app-custom-labeled-card
+        [label]="'Source'"
+        [text]="'International Monetary Fund (IMF Terms of Use), Global price of Aluminum, retrieved from FRED,\n'+
+'      Federal Reserve Bank of St. Louis. This data feed uses the FRED® API but is not endorsed or certified by the\n'+
+'      Federal Reserve Bank of St. Louis. By using this data feed, you agree to be bound by the FRED® API Terms of Use.'"
+        [links]="[
+      {'href': 'https://www.imf.org/external/terms.htm', 'text': 'IMF Terms of Use'},
+      {'href': 'https://fred.stlouisfed.org/docs/api/terms_of_use.html', 'text': 'FRED® API Terms of Use'},
+      ]"
+      ></app-custom-labeled-card>
+      <app-custom-labeled-card
+        [label]="'Details'"
+        [text]="'Aluminum (chemical symbol Al) is a very light metal characterized by high electrical conductivity. These properties mean it has found wide application in electrical engineering, aerospace, construction, and many other areas of industry.\n'+
+'\n'+
+'This metal and its alloys are very easily weldable using various methods.\n'+
+'\n'+
+'The exception is the 2000 series alloys, commonly known as duralumin, which exhibit reduced weldability.\n'+
+'\n'+
+'Aluminum has found wide application primarily due to its significant chemical resistance and low weight. This is why its alloys are used to make, for example, small coins, kitchen utensils, and cookware. In construction, extruded profiles are used to make, for example, building joinery (windows, doors, etc.).'"
+        [links]="[
+      {'href': 'https://proal.com.pl/o-aluminium/', 'text': 'Proal'},
+      ]"
+      ></app-custom-labeled-card>
+    </div>
+    <div *ngSwitchCase="'COPPER'">
+      <ion-card>
+        <ion-card-content>
+          <canvas baseChart
+                  [datasets]="chartData"
+                  [type]="chartType"
+                  [labels]="chartLabels"
+                  [options]="chartOptions"
+                  [legend]="showLegend">
+          </canvas>
+        </ion-card-content>
+      </ion-card>
+      <app-custom-labeled-card
+        [label]="'Source'"
+        [text]="'International Monetary Fund (IMF Terms of Use), Global price of Copper, retrieved from FRED,\n'+
+'        Federal Reserve Bank of St. Louis. This data feed uses the FRED® API but is not endorsed or certified by the\n'+
+'        Federal Reserve Bank of St. Louis. By using this data feed, you agree to be bound by the FRED® API Terms of Use.'"
+        [links]="[
+      {'href': 'https://www.imf.org/external/terms.htm', 'text': 'IMF Terms of Use'},
+      {'href': 'https://fred.stlouisfed.org/docs/api/terms_of_use.html', 'text': 'FRED® API Terms of Use'},
+      ]"
+      ></app-custom-labeled-card>
+      <app-custom-labeled-card
+        [label]="'Details'"
+        [text]="'Copper is a metal with very wide application. Its weight is also quite high, with a density of 8.9 g/cm3. ' +
+ 'Its electron structure gives it excellent electrical conductivity, which dictates its primary applications. ' +
+  'It is worth bearing in mind that copper does not have very high strength parameters. Its tensile strength is ' +
+   '200 to 220 MPa, and its hardness on the Brinell scale is approx. 30 HB. Consequently, pure copper does not ' +
+    'have structural applications, although it does when combined with brass or bronze. Pure copper occurs ' +
+     'relatively sporadically in nature. It is most often obtained from ore minerals (covellite, ' +
+      'chalcopyrite, and chalcocite).'"
+        [links]="[
+      {'href': 'https://www.ebmia.pl/wiedza/porady/obrobka-porady/miedz-co-to-jest-wlasciwosci-zastosowanie/', 'text': 'Ebmia'},
+      ]"
+      ></app-custom-labeled-card>
+    </div>
+    <div *ngSwitchCase="'WTI'">
+      <ion-card>
+        <ion-card-content>
+          <canvas baseChart
+                  [datasets]="chartData"
+                  [type]="chartType"
+                  [labels]="chartLabels"
+                  [options]="chartOptions"
+                  [legend]="showLegend">
+          </canvas>
+        </ion-card-content>
+      </ion-card>
+      <app-custom-labeled-card
+        [label]="'Source'"
+        [text]="'U.S. Energy Information Administration, Crude Oil Prices: West Texas Intermediate (WTI) -\n'+
+'        Cushing, Oklahoma, retrieved from FRED, Federal Reserve Bank of St. Louis. This data feed uses the FRED® API\n'+
+'        but is not endorsed or certified by the Federal Reserve Bank of St. Louis. By using this data feed,\n'+
+'        you agree to be bound by the FRED® API Terms of Use.'"
+        [links]="[
+      {'href': 'https://fred.stlouisfed.org/docs/api/terms_of_use.html', 'text': 'FRED® API Terms of Use'},
+      ]"
+      ></app-custom-labeled-card>
+      <app-custom-labeled-card
+        [label]="'Details'"
+        [text]="'Rock oil - A fossil energy source that is a mixture of natural liquid hydrocarbons ' +
+ 'and solid and gaseous hydrocarbons dissolved within them. The basic chemical composition of crude oil is:' +
+  ' carbon (84 – 86%), hydrogen (12.5 - 14.5%), and minor amounts of other elements (mainly oxygen, nitrogen, and sulfur).' +
+   ' Crude oil is an oily liquid that is lighter than water, ranges in color from light yellow through brown to almost black, and has a pungent, ' +
+    'characteristic odor, often conditioned by its sulfur content.'"
+        [links]="[
+      {'href': 'https://infolupki.pgi.gov.pl/pl/ropa-naftowa', 'text': 'Serwis Informacyjny PAŃSTWOWEJ SŁUŻBY GEOLOGICZNEJ'},
+      ]"
+      ></app-custom-labeled-card>
+
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-header [translucent]="true" collapse="fade">
+  <ion-toolbar class="header-toolbar">
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Currency rates
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" class="condense-header-title">Currency rates</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div class="horizontal-cards-container d-flex flex-row align-items-start justify-content-start">
+    <ion-card *ngFor="let symbol of symbols">
+      <ion-card-header>
+        <img class="card-icon" [src]="'./assets/' + symbol + '-flag.png'" [alt]="symbol + ' flag'">
+      </ion-card-header>
+      <ion-card-content>
+        <ng-container *ngIf="exchangeData.length > 0 && getExchangeValue(symbol)">
+          <span class="value">{{ getExchangeValue(symbol) | currency: 'PLN':'':'1.2-2'}} <span>PLN</span></span>
+        </ng-container>
+        <div class="symbol"><ion-text color="medium">{{ symbol }}</ion-text></div>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

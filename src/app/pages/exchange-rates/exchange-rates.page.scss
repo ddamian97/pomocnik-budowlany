@@ -1,0 +1,33 @@
+@use 'sass:math';
+
+.horizontal-cards-container{
+  width: auto;
+  //max-width: calc(100vw - 4rem);
+  overflow: auto;
+  ion-card{
+    width: auto;
+    max-width: 40vw;
+    min-width: 40vw;
+    margin-left: calc(var(--ion-padding) / 2);
+    margin-right: calc(var(--ion-padding) / 2);
+    &:first-child{
+      margin-left: var(--ion-padding);
+    }
+    &:last-child{
+      margin-right: var(--ion-padding);
+    }
+    .card-icon{
+      border-radius: 1000rem;
+      overflow: hidden;
+      width: 3rem;
+      height: 3rem;
+      object-fit: cover;
+    }
+    .value{
+      font-weight: 600;
+    }
+  }
+  ion-card-content{
+    padding-top: 1rem !important;
+  }
+}

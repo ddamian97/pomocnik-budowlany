@@ -25,6 +25,30 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
+@import "src/theme/flex";
+
+:root{
+  --ion-safe-area-top: 2rem;
+}
+ion-menu::part(container) {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  background: rgba(255, 255, 255, 0.6);
+}
+.menu-content{
+  --background: transparent !important;
+}
+.condense-header-title{
+  font-size: 3.2rem;
+}
+.header-toolbar{
+  padding-bottom: var(--ion-safe-area-top);
+}
 ion-button{
   font-size: 1.4rem;
   --border-radius: 0;
@@ -34,4 +58,46 @@ ion-button{
   --padding-bottom: 2.2rem;
   --padding-start: 1rem;
   --padding-end: 1rem;
+}
+ion-label{
+  font-size: 1.4rem;
+}
+.card-title-container{
+  .card-title{
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+}
+ion-card{
+  margin-top: 1rem;
+  background-color: var(--ion-color-primary-contrast);
+  --color: var(--ion-color-dark);
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.09);
+}
+ion-card-header, ion-card-content{
+  padding-left: 1.6rem !important;
+  padding-right: 1rem !important;
+}
+ion-card-content, ion-card-content p{
+  font-size: 1.4rem !important;
+}
+ion-card-content{
+  -webkit-padding-start: 2rem !important;
+  padding-inline-start: 2rem !important;
+  -webkit-padding-end: 2rem !important;
+  padding-inline-end: 2rem !important;
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+
+.color-preview {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 1.5rem;
+}
+
+.circle-picker {
+  padding: var(--ion-padding);
 }

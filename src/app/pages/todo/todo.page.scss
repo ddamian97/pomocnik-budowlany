@@ -1,0 +1,23 @@
+.project-name {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+.project-item {
+  --inner-padding-end: 2rem;
+  --inner-padding-start: 0;
+}
+.project-color-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.project-description {
+  font-size: 1.2rem;
+}
+.add-category-button{
+  --padding-top: 1rem;
+  --padding-bottom: 1rem;
+  --padding-end: 0;
+  --padding-start: 0;
+  margin: 0;
+}

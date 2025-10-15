@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FolderPageRoutingModule } from './folder-routing.module';
+import { TodoPageRoutingModule } from './todo-routing.module';
 
-import { FolderPage } from './folder.page';
+import { TodoPage } from './todo.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FolderPageRoutingModule
+    TodoPageRoutingModule,
   ],
-  declarations: [FolderPage]
+  declarations: [TodoPage]
 })
-export class FolderPageModule {}
+export class TodoPageModule {}

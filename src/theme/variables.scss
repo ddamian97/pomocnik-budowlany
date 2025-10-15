@@ -3,7 +3,12 @@
 
 /** Ionic CSS Variables **/
 :root {
-  /** primary **/
+  --border-radius: 1.4rem;
+  --ion-background-color: #f3f3f3;
+  --ion-toolbar-segment-color: var(--ion-background-color);
+  --ion-toolbar-segment-color-checked: #ffffff;
+  --ion-item-background: #ffffff;
+    /** primary **/
   --ion-color-primary: #3880FF;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
@@ -20,7 +25,7 @@
   --ion-color-secondary-tint: #50c8ff;
 
   /** tertiary **/
-  --ion-color-tertiary: #5260ff;
+  --ion-color-tertiary: #3b2fe0;
   --ion-color-tertiary-rgb: 82, 96, 255;
   --ion-color-tertiary-contrast: #ffffff;
   --ion-color-tertiary-contrast-rgb: 255, 255, 255;
@@ -74,11 +79,12 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  --ion-padding: 1.8rem;
 }
 
-
 html {
-    font-size: 62.5%;
+    font-size: 62.5% !important;
     //@include breakpoint($tabletXL){
     //  font-size: 56.25%
     //}
@@ -86,5 +92,4 @@ html {
    * For more information on dynamic font scaling, visit the documentation:
    * https://ionicframework.com/docs/layout/dynamic-font-scaling
    */
-  --ion-dynamic-font: var(--ion-default-dynamic-font);
 }
