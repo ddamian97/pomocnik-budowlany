@@ -3,6 +3,7 @@ import { Storage } from '@ionic/storage-angular';
 
 const PROJECT_KEY = 'categories';
 const TASK_KEY = 'tasks';
+const DIARY_KEY = 'diary_entries';
 
 export interface Project {
   name: string;
@@ -18,6 +19,20 @@ export interface Task {
   due?: string
   done?: boolean;
   id?: number;
+}
+
+export interface DiaryAttachment {
+  name: string;
+  path: string;
+  type: 'image' | 'document';
+}
+
+export interface DiaryEntry {
+  id: number;
+  title: string;
+  date: string;
+  description: string;
+  attachments?: DiaryAttachment[];
 }
 
 @Injectable({
@@ -92,5 +107,34 @@ export class DataService {
   private async getTasksAsArray(): Promise<Task[]> {
     const storedTasks = await this.storage.get(TASK_KEY);
     return storedTasks ? JSON.parse(storedTasks) : [];
+  }
+
+  async getDiaryEntries(): Promise<DiaryEntry[]> {
+    const entries = await this.storage.get(DIARY_KEY);
+    return entries ? JSON.parse(entries) : [];
+  }
+
+  async getDiaryEntryById(id: number): Promise<DiaryEntry | undefined>{
+    const entries = await this.getDiaryEntries();
+    return entries.find(entry => entry.id === id);
+  }
+
+  async addDiaryEntry(entry: Omit<DiaryEntry, 'id'>): Promise<void> {
+    const entries = await this.getDiaryEntries();
+    const newEntry: DiaryEntry = {
+      id: Date.now(),
+      ...entry
+    };
+    entries.unshift(newEntry);
+    await this.storage.set(DIARY_KEY, JSON.stringify(entries));
+  }
+
+  async updateDiaryEntry(updatedEntry: DiaryEntry): Promise<void> {
+    let entries = await this.getDiaryEntries();
+    const index = entries.findIndex(entry => entry.id === updatedEntry.id);
+    if (index > -1) {
+      entries[index] = updatedEntry;
+      await this.storage.set(DIARY_KEY, JSON.stringify(entries));
+    }
   }
 }
