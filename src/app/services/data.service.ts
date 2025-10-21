@@ -32,7 +32,7 @@ export interface DiaryEntry {
   title: string;
   date: string;
   description: string;
-  attachments?: DiaryAttachment[];
+  attachments: DiaryAttachment[];
 }
 
 @Injectable({

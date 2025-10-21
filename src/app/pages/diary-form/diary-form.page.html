@@ -1,13 +1,77 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>diary-form</ion-title>
+<ion-header>
+  <ion-toolbar class="header-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/diary" color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ isEditMode ? 'Edit Entry' : 'New Entry' }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="saveEntry()">Save</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">diary-form</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <form [formGroup]="diaryForm">
+    <ion-card>
+      <ion-list>
+        <ion-item>
+          <ion-input
+            label="Title"
+            labelPlacement="stacked"
+            formControlName="title"
+            placeholder="e.g., Pouring foundations">
+          </ion-input>
+        </ion-item>
+
+        <ion-item id="date-picker-item">
+          <ion-label>Date</ion-label>
+          <ion-text slot="end">{{ diaryForm.get('date')?.value | date: 'd MMMM yyyy' }}</ion-text>
+          <ion-popover trigger="date-picker-item" size="cover">
+            <ng-template>
+              <ion-datetime
+                presentation="date"
+                formControlName="date"
+                [max]="maxDate">
+              </ion-datetime>
+            </ng-template>
+          </ion-popover>
+        </ion-item>
+
+        <ion-item>
+          <ion-textarea
+            label="Description"
+            labelPlacement="stacked"
+            formControlName="description"
+            placeholder="Detailed description of the work performed..."
+            [autoGrow]="true">
+          </ion-textarea>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <ion-card>
+      <ion-list>
+        <ion-list-header>
+          <ion-label>Attachments</ion-label>
+        </ion-list-header>
+      </ion-list>
+
+      <div class="attachment-grid">
+        <div *ngFor="let att of attachments" class="image-container">
+          <img [src]="att.path" class="preview-image" />
+
+          <ion-button class="remove-button" fill="clear" color="light" (click)="removeAttachment(att)">
+            <ion-icon name="close-circle" slot="icon-only"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+
+      <ion-item lines="none">
+        <ion-button expand="block" fill="outline" (click)="addPhoto()">
+          <ion-icon name="camera-outline" slot="start"></ion-icon>
+          Add Photo
+        </ion-button>
+      </ion-item>
+    </ion-card>
+  </form>
 </ion-content>

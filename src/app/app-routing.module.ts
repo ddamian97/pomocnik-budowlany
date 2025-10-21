@@ -44,7 +44,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/diary-form/diary-form.module').then( m => m.DiaryFormPageModule)
   },
   {
-    path: 'diary-form:id',
+    path: 'diary-form/:id',
     loadChildren: () => import('./pages/diary-form/diary-form.module').then( m => m.DiaryFormPageModule)
   }
 ];
