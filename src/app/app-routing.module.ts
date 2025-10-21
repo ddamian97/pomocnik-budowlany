@@ -34,6 +34,18 @@ const routes: Routes = [
   {
     path: 'todo-detail',
     loadChildren: () => import('./pages/todo-detail/todo-detail.module').then( m => m.TodoDetailPageModule)
+  },
+  {
+    path: 'diary',
+    loadChildren: () => import('./pages/diary/diary.module').then( m => m.DiaryPageModule)
+  },
+  {
+    path: 'diary-form',
+    loadChildren: () => import('./pages/diary-form/diary-form.module').then( m => m.DiaryFormPageModule)
+  },
+  {
+    path: 'diary-form:id',
+    loadChildren: () => import('./pages/diary-form/diary-form.module').then( m => m.DiaryFormPageModule)
   }
 ];
 
